@@ -109,20 +109,45 @@
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact" spacing="100"/>
                             </stackView>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sfQ-SH-Xwk" userLabel="RestartBtn">
+                                <rect key="frame" x="180" y="28" width="240" height="95"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="95" id="hzQ-xB-RBu">
+                                        <variation key="heightClass=compact" constant="95"/>
+                                    </constraint>
+                                    <constraint firstAttribute="width" constant="240" id="oar-fi-qXG"/>
+                                </constraints>
+                                <state key="normal" image="restart"/>
+                                <variation key="heightClass=compact" ambiguous="YES" misplaced="YES">
+                                    <rect key="frame" x="180" y="21" width="240" height="95"/>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
+                                    <rect key="frame" x="80" y="35" width="240" height="70"/>
+                                </variation>
+                                <connections>
+                                    <action selector="onRestartPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yRV-h3-IaV"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="bKx-Ur-G1e" secondAttribute="trailing" id="2gB-tr-nGF"/>
                             <constraint firstItem="2rl-ZJ-qHd" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="2oG-DV-E9u"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="2rl-ZJ-qHd" secondAttribute="bottom" id="2ol-S5-PqX"/>
                             <constraint firstItem="3xw-lE-Q8b" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="3yF-qS-J6Y"/>
                             <constraint firstItem="TjK-uJ-xIo" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="5wv-UW-ppG"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="bKx-Ur-G1e" secondAttribute="bottom" id="7yd-gj-9St"/>
                             <constraint firstItem="bKx-Ur-G1e" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="8SO-HH-y1U"/>
                             <constraint firstItem="ebs-L2-KFM" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Fy6-cC-RtL"/>
                             <constraint firstItem="sWJ-iB-XNA" firstAttribute="centerX" secondItem="ebs-L2-KFM" secondAttribute="centerX" id="HKP-9G-PgF"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="bKx-Ur-G1e" secondAttribute="bottom" id="JDl-zS-AKU"/>
+                            <constraint firstItem="bKx-Ur-G1e" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="OYb-L2-uee"/>
                             <constraint firstAttribute="trailing" secondItem="bKx-Ur-G1e" secondAttribute="trailing" id="XM0-nP-aJc"/>
                             <constraint firstItem="bKx-Ur-G1e" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="16" id="b0w-dP-Eun"/>
+                            <constraint firstItem="sfQ-SH-Xwk" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="bVh-wt-5bo"/>
+                            <constraint firstItem="sfQ-SH-Xwk" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="bqA-hF-c4c"/>
                             <constraint firstAttribute="trailing" secondItem="2rl-ZJ-qHd" secondAttribute="trailing" id="brV-Xg-niu"/>
                             <constraint firstItem="bKx-Ur-G1e" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="dQi-tv-sQv"/>
                             <constraint firstItem="2rl-ZJ-qHd" firstAttribute="top" secondItem="3xw-lE-Q8b" secondAttribute="bottom" id="iOQ-F3-NXm">
@@ -134,6 +159,7 @@
                             <constraint firstItem="3xw-lE-Q8b" firstAttribute="top" secondItem="TjK-uJ-xIo" secondAttribute="top" id="qWP-Fn-cN6">
                                 <variation key="heightClass=compact" constant="10"/>
                             </constraint>
+                            <constraint firstItem="bKx-Ur-G1e" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="rzI-xe-uC7"/>
                             <constraint firstItem="bKx-Ur-G1e" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="tFd-DG-bXR"/>
                         </constraints>
                         <variation key="default">
@@ -161,6 +187,7 @@
                         <outlet property="penalty1Img" destination="T4P-VP-wbU" id="A7c-wy-7JN"/>
                         <outlet property="penalty2Img" destination="h9M-9K-8lE" id="uWx-nH-PBB"/>
                         <outlet property="penalty3Img" destination="9Tj-qV-JjH" id="TZo-z3-OiX"/>
+                        <outlet property="restartBtn" destination="sfQ-SH-Xwk" id="C64-qm-gb5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -175,6 +202,7 @@
         <image name="heart" width="95" height="98"/>
         <image name="idle1" width="599" height="380"/>
         <image name="livespanel" width="468" height="137"/>
+        <image name="restart" width="468" height="139"/>
         <image name="skull" width="95" height="98"/>
     </resources>
 </document>

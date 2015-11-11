@@ -17,6 +17,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var penalty1Img: UIImageView!
     @IBOutlet weak var penalty2Img: UIImageView!
     @IBOutlet weak var penalty3Img: UIImageView!
+    @IBOutlet weak var restartBtn: UIButton!
     
     let DIM_ALPHA: CGFloat = 0.2
     let OPAQUE: CGFloat = 1.0
@@ -36,16 +37,10 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("monsterImg is \(monsterImg.frame)")
-        print("heartImg is \(heartImg.frame)")
-        print("foodImg is \(foodImg.frame)")
-
         foodImg.dropTarget = monsterImg
         heartImg.dropTarget = monsterImg
         
-        penalty1Img.alpha = DIM_ALPHA
-        penalty2Img.alpha = DIM_ALPHA
-        penalty3Img.alpha = DIM_ALPHA
+        resetPenalties()
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "itemDroppedOnCharacter:", name: "onTargetDropped", object: nil)
         
@@ -73,9 +68,15 @@ class ViewController: UIViewController {
         startTimer()
     }
     
+    func resetPenalties(){
+        penalty1Img.alpha = DIM_ALPHA
+        penalty2Img.alpha = DIM_ALPHA
+        penalty3Img.alpha = DIM_ALPHA
+        penalties = 0
+    }
+    
     func itemDroppedOnCharacter(notif: AnyObject){
-        print("you are in the right spot")
-        print("frame \(monsterImg.frame)")
+//        print("frame \(monsterImg.frame)")
         monsterHappy = true
         startTimer()            //invalidates old timer, and restarts timer
         
@@ -88,6 +89,7 @@ class ViewController: UIViewController {
             sfxBite.play()
         }
     }
+    
     func disableImg(image: DragImage){
         image.alpha = DIM_ALPHA
         image.userInteractionEnabled = false
@@ -98,7 +100,7 @@ class ViewController: UIViewController {
             timer.invalidate()
         }
         
-        timer = NSTimer.scheduledTimerWithTimeInterval(5.0, target: self, selector: "changeGameState", userInfo: nil, repeats: true)
+        timer = NSTimer.scheduledTimerWithTimeInterval(3.0, target: self, selector: "changeGameState", userInfo: nil, repeats: true)
     }
     
     func changeGameState(){
@@ -152,6 +154,21 @@ class ViewController: UIViewController {
         disableImg(heartImg)
         disableImg(foodImg)
         monsterImg.playDeathAnimation()
+        restartBtn.hidden = false
     }
+    
+    @IBAction func onRestartPressed(sender: AnyObject) {
+        sfxSkull.play()
+        restartBtn.hidden = true
+        monsterDead = false
+        resetPenalties()
+        foodImg.alpha = OPAQUE
+        foodImg.userInteractionEnabled = true
+        heartImg.alpha = OPAQUE
+        heartImg.userInteractionEnabled = true
+        startTimer()
+        monsterImg.playIdleAnimation()
+    }
+  
 
 }
