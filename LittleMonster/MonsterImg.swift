@@ -10,22 +10,22 @@ import Foundation
 import UIKit
 
 class MonsterImg: UIImageView{
+    
     override init(frame: CGRect){
         super.init(frame: frame)
     }
     
     required init?(coder aDecoder: NSCoder){
         super.init(coder: aDecoder)
-        playIdleAnimation() 
     }
-    //  could make a play animation func and pass in the image names and how many images
-    func playIdleAnimation(){
-        self.image = UIImage(named: "idle1.png")        //sets default image for when not animating
+    
+    func playIdleAnimation(anim: String){
+        self.image = UIImage(named: "\(anim).png")        //sets default image for when not animating
         self.animationImages = nil
         
         var imgArray = [UIImage]()                      //  make temp array, add 4 images of a set of 4 in asset folder for animation
         for var x = 1; x <= 4; x++ {
-            let img = UIImage(named: "idle\(x).png")    //  loop thru and assign images individually, then in next line, add to the array
+            let img = UIImage(named: "\(anim)\(x).png")    //  loop thru and assign images individually, then in next line, add to the array
             imgArray.append(img!)                       //  ok to use ! here, as you know you have the images in your asset folder
         }
         
@@ -35,13 +35,13 @@ class MonsterImg: UIImageView{
         self.startAnimating()
     }
     
-    func playDeathAnimation(){
-        self.image = UIImage(named: "dead5.png")        //  sets default image so char doesn't reset to alive after dying
+    func playDeathAnimation(anim: String){
         self.animationImages = nil                      //  clears out image cache (my words)
+        self.image = UIImage(named: "\(anim).png")        //  sets default image so char doesn't reset to alive after dying
         
         var imgArray = [UIImage]()
         for var x = 1; x <= 5; x++ {
-            let img = UIImage(named: "dead\(x).png")
+            let img = UIImage(named: "\(anim)\(x).png")
             imgArray.append(img!)
         }
         
@@ -49,6 +49,7 @@ class MonsterImg: UIImageView{
         self.animationDuration = 0.8
         self.animationRepeatCount = 1
         self.startAnimating()
+        self.image = UIImage(named: "\(anim)5.png")
     }
 
 }

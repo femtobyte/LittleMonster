@@ -44,6 +44,7 @@ class DragImage: UIImageView{
             let position = touch.locationInView(self.superview)             //  sets position to current touch
             if CGRectContainsPoint(target.frame, position){                 //  checks if current touch is in target rect, if so, sends notification.   ViewController will be listening for this notification and do something when it gets it
                 NSNotificationCenter.defaultCenter().postNotification(NSNotification(name: "onTargetDropped", object: nil))
+                //something learned in this project is that it's recommended to not use stack views on images that are being dragged.  I got it to work in this project by changing their location so I didn't use seperate constraint sets for that stack view.  using some different settings works fine.  tested in another file taking them out of stack view and setting up seperate constraints and they worked fine.
             }
         }
         
